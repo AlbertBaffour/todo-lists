@@ -1,0 +1,27 @@
+<ul class="m-4 rounded-lg border-dark border" >
+  <li [ngStyle]="{'background-color':todoList.category}" class="list-group-item text-center" ><input class=" bg-transparent border-0 text-center text-light font-weight-bolder" [(ngModel)]="todoList.name"/>
+    </li>
+    <div class="input-group">
+      <input type="text" placeholder="new todo item ..."
+       class="form-control m-2"
+       [(ngModel)]="todoItem.description"  #description="ngModel" >
+          <button (click)="addTodoItem()" class="btn pt-0 pb-0 border-0 float-right">
+          <i class="fas fa-plus"></i>
+          </button>
+    </div>
+    <div *ngIf="errorMessage" class="ml-3 text-danger">
+      {{errorMessage}}
+    </div>
+    <div  *ngFor="let todoItem of (todoItems)">
+      <button *ngIf="todoItem.list_id===todoList.id.toString()"
+      class="btn text-danger delete-btn mt-2 border-0 float-right"
+      (click)="deleteTodoItem(todoItem.id)">
+      <i class="fas fa-trash-alt"></i>
+      </button>
+      <app-todo-item [todoItem]="todoItem" [list_id]="todoList.id.toString()"></app-todo-item>
+
+  </div>
+</ul>
+<button class="position-absolute btn-del h3 p-2 rounded-pill bg-white text-danger">
+  <i class="fas fa-times"></i>
+</button>

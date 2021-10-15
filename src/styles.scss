@@ -1,3 +1,6 @@
+$light: #E6EAF9;
+$secondary: #A9B2D3;
+$primary: #414252;
 //override Bootstrap variables and custom mixins
 @import "variables";
 
@@ -7,3 +10,48 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
 //custom code/partials
+.delete-btn{
+  z-index: 99;
+  position: relative;
+}
+.strike{
+  text-decoration: line-through;
+}
+
+nav a:hover {
+  background-color:#ee5e5e8a;
+}
+
+nav a.active {
+  background-color:#ec6767;
+}
+
+.btn-add:enabled{
+  top: 10px;
+  left: 70%;
+  border: 0;
+  outline: none;
+}
+.btn-add:hover{
+  animation-name: zoom;
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
+
+}
+.btn-del:enabled{
+  top: 10px;
+  left: 80%;
+  border: 0;
+  outline: none;
+}
+.btn-del:hover{
+ animation-name: zoom;
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
+
+}
+@keyframes zoom {
+  0% { }
+  65% {font-size: 2em;}
+  100%{}
+}

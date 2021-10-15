@@ -1,4 +1,5 @@
-      <div class="col-sm p-3 min-vh-100">
+      <div class=" d-flex flex-wrap">
           <!-- content -->
+          <app-todo-list class="list-group col-12 col-md-6 col-lg-4" *ngFor="let todoList of (todoLists$|async)" [todoList]="todoList"></app-todo-list>
       </div>
 

@@ -1,31 +1,29 @@
 
-      <div class=" bg-light sticky-top">
-        <div class="d-flex  flex-row w-100 flex-nowrap bg-light align-items-center sticky-top">
-          <h2 class="p-2 d-none d-sm-block">ToDo App</h2>
-          <h5 class="p-2 d-sm-none">ToDo App</h5>
+      <div class="bg-danger p-2 sticky-top shadow-sm rounded rounded-bottom" >
+        <nav class="d-flex  flex-row w-100 flex-nowrap  align-items-center sticky-top">
+          <h2 class="p-2 d-none d-sm-block text-light">ToDo App</h2>
+          <h5 class="p-2 d-sm-none text-light">ToDo App</h5>
 
-            <ul class="nav nav-pills nav-flush flex-row flex-nowrap mb-auto mx-auto w-75  text-center align-items-center">
-                <li class="nav-item w-100">
-                    <a href="/" class="nav-link py-3 px-2  text-secondary" title="todo-list" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                      <i class="fas fa-list"></i>
+            <ul class="nav nav-pills nav-flush flex-row flex-nowrap mb-auto ml-auto w-50 rounded-bottom   text-center align-items-end">
+               <li class="nav-item w-100 bg-danger rounded-bottom border border-light border-top-0 border-right-0">
+                  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                  class="d-block rounded-bottom text-light text-decoration-none py-3 px-2" title="Overzicht" data-bs-toggle="tooltip" data-bs-placement="right" >
+                  <i class=" fas fa-list-alt"></i><span class="d-none d-md-inline"> Overzicht</span>
+                  </a>
+              </li>
+                <li class="nav-item w-100  bg-danger rounded-bottom border border-light border-top-0 border-right-0 ">
+                    <a  routerLink="/todo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                     class="d-block rounded-bottom text-light text-decoration-none py-3 px-2 " title="ToDo" data-bs-toggle="tooltip" data-bs-placement="right">
+                      <i class="far fa-check-square"></i><span class="d-none d-md-inline"> ToDo</span>
                     </a>
                 </li>
-                <li class="nav-item w-100">
-                    <a href="#" class="nav-link py-3 px-2  text-secondary" title="Active" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                      <i class="far fa-check-square"></i>
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a href="#" class="nav-link py-3 px-2  text-secondary" title="In progress" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                      <i class="fas fa-spinner"></i>
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a href="#" class="nav-link py-3 px-2  text-secondary" title="Done" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                      <i class="fas fa-check-square"></i>
+                <li class="nav-item w-100 bg-danger  rounded-bottom border border-light border-top-0 border-right-0">
+                    <a routerLink="/done" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    class="d-block rounded-bottom text-light text-decoration-none py-3 px-2" title="Done" data-bs-toggle="tooltip" data-bs-placement="right" >
+                      <i class="fas fa-check-square"></i> <span class="d-none d-md-inline"> Done</span>
                     </a>
                 </li>
 
             </ul>
-        </div>
+          </nav>
     </div>
