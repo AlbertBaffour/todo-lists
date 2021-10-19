@@ -22,6 +22,10 @@
     "@angular/router": "~12.0.5",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "mydatepicker": "^2.6.11",
+    "ng-datepicker": "^1.0.2",
+    "ng2-datepicker": "^12.0.0",
+    "ngx-colors": "^2.9.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

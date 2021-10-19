@@ -1,29 +1,50 @@
 
-      <div class="bg-danger p-2 sticky-top shadow-sm rounded rounded-bottom" >
+      <div class="bg-primary p-2 sticky-top shadow-sm rounded-bottom" >
         <nav class="d-flex  flex-row w-100 flex-nowrap  align-items-center sticky-top">
           <h2 class="p-2 d-none d-sm-block text-light">ToDo App</h2>
           <h5 class="p-2 d-sm-none text-light">ToDo App</h5>
 
-            <ul class="nav nav-pills nav-flush flex-row flex-nowrap mb-auto ml-auto w-50 rounded-bottom   text-center align-items-end">
-               <li class="nav-item w-100 bg-danger rounded-bottom border border-light border-top-0 border-right-0">
-                  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                  class="d-block rounded-bottom text-light text-decoration-none py-3 px-2" title="Overzicht" data-bs-toggle="tooltip" data-bs-placement="right" >
-                  <i class=" fas fa-list-alt"></i><span class="d-none d-md-inline"> Overzicht</span>
-                  </a>
-              </li>
-                <li class="nav-item w-100  bg-danger rounded-bottom border border-light border-top-0 border-right-0 ">
-                    <a  routerLink="/todo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                     class="d-block rounded-bottom text-light text-decoration-none py-3 px-2 " title="ToDo" data-bs-toggle="tooltip" data-bs-placement="right">
-                      <i class="far fa-check-square"></i><span class="d-none d-md-inline"> ToDo</span>
-                    </a>
-                </li>
-                <li class="nav-item w-100 bg-danger  rounded-bottom border border-light border-top-0 border-right-0">
-                    <a routerLink="/done" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                    class="d-block rounded-bottom text-light text-decoration-none py-3 px-2" title="Done" data-bs-toggle="tooltip" data-bs-placement="right" >
-                      <i class="fas fa-check-square"></i> <span class="d-none d-md-inline"> Done</span>
-                    </a>
-                </li>
-
-            </ul>
+          <button title="Voeg een nieuwe lijst toe" class=" btn-addList position-absolute btn btn btn-outline-light"
+          data-toggle="modal" data-target="#todoListModal">
+              lijst toevoegen <i class=" fas fa-plus"></i>
+          </button>
           </nav>
     </div>
+
+      <!-- Modal 2 with validation-->
+<div class="modal fade" id="todoListModal"  tabindex="-1" aria-labelledby="todoListModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="todoListModalLabel">Nieuwe lijst</h5>
+        <button class="btn-close btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+         x
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="createListForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Naam todolijst</label>
+            <input type="text" [(ngModel)]="todoList.name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  id="inputName">
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Naam is vereist</div>
+           </div>
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category/Kleur</label>
+            <ngx-colors ngx-colors-trigger [(ngModel)]="todoList.category" formControlName="category" id="inputCategory"
+            ></ngx-colors>
+            <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+              <div *ngIf="f.category.errors.required">Kleur is vereist</div>
+           </div>
+          </div>
+
+          <button type="submit" id="closeModal" class="btn btn-primary">Opslaan</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #closebutton class="btn btn-warning" data-dismiss="modal">Annuleer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,11 @@
 <li *ngIf="list_id==todoItem.list_id" class="bg-transparent  list-group-item ">
-  <div class=" d-inline-block bg-white rounded-lg mr-1"><input class="m-1"  type="checkbox" [checked]="todoItem.status == 'done'" (change)="changeStatus()"/></div>
-  <input class="mr-2 text-dark font-weight-bold bg-transparent border-0" [(ngModel)]="todoItem.description" [ngClass]="{'strike': todoItem.status==='done'}"/>
-  <span class=" small text-dark">- {{todoItem.date|date:'mediumDate'}}</span>
- </li>
+  <div class=" d-inline-block bg-white rounded-lg mr-1">
+    <input class="m-1" title="Status aanpassen (todo/done)"  type="checkbox" [checked]="todoItem.status == 'done'" (change)="changeStatus()"/></div>
+  <input class="mr-2 text-dark font-weight-bold bg-transparent border-0" (change)="editTodoItem()"
+  [(ngModel)]="todoItem.description" placeholder=" omschrijving ..." title="klik erop om aan te passen"
+   [ngClass]="{'strike': todoItem.status==='done'}"/>
+  <input type="date" class="small text-dark" [(ngModel)]="todoItem.date" (change)="editTodoItemDate()" />
+  {{(todoItem.date.replace('/','-')).replace('/','-')}}
+
+</li>
+

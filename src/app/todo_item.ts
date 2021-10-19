@@ -2,10 +2,10 @@ export interface TodoItem {
   id: number;
   list_id: string;
   description: string;
-  date: Date;
+  date: string;
   status: string;
   order: string;
 
-  
+
 
 }

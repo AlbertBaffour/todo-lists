@@ -1,6 +1,6 @@
 $light: #E6EAF9;
 $secondary: #A9B2D3;
-$primary: #414252;
+$primary: #245561;
 //override Bootstrap variables and custom mixins
 @import "variables";
 
@@ -10,6 +10,10 @@ $primary: #414252;
 @import "node_modules/bootstrap/scss/bootstrap";
 
 //custom code/partials
+.hide-modal{
+  display: none;
+  opacity: 0;
+}
 .delete-btn{
   z-index: 99;
   position: relative;
@@ -18,36 +22,27 @@ $primary: #414252;
   text-decoration: line-through;
 }
 
-nav a:hover {
-  background-color:#ee5e5e8a;
-}
-
-nav a.active {
-  background-color:#ec6767;
-}
-
-.btn-add:enabled{
-  top: 10px;
-  left: 70%;
+.btn-color{
+  top: 35px;
+  left: 30px;
   border: 0;
   outline: none;
 }
-.btn-add:hover{
-  animation-name: zoom;
- animation-duration: 2s;
- animation-iteration-count: infinite;
-
+.btn-addList{
+  right:70px;
 }
+
 .btn-del:enabled{
-  top: 10px;
-  left: 80%;
+  top: 30px;
+  right: 50px;
+  height: 35px;
+  width: 35px;
   border: 0;
   outline: none;
 }
 .btn-del:hover{
  animation-name: zoom;
  animation-duration: 2s;
- animation-iteration-count: infinite;
 
 }
 @keyframes zoom {

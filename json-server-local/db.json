@@ -3,26 +3,26 @@
     {
       "id": 1,
       "name": "test1",
-      "category": "red"
+      "category": "#388e3c"
     },
     {
       "id": 2,
       "name": "test2",
-      "category": "blue"
+      "category": "red"
     },
     {
       "id": 3,
       "name": "test3",
-      "category": "purple"
+      "category": "Purple"
     }
   ],
   "items": [
     {
       "id": 1,
       "list_id": "1",
-      "description": "some comment",
-      "date": "2021/02/01",
-      "status": "done",
+      "description": "some commen1t",
+      "date": "2021/10/18",
+      "status": "todo",
       "order": "1"
     },
     {
@@ -45,7 +45,7 @@
       "id": 4,
       "list_id": "3",
       "description": "Albertfd",
-      "date": "2021-10-12T17:53:31.083Z",
+      "date": "2021-10-12",
       "status": "todo",
       "order": "1"
     },
@@ -53,16 +53,16 @@
       "id": 5,
       "list_id": "3",
       "description": "Huistaak ai",
-      "date": "2021-10-12T18:03:54.964Z",
+      "date": "2021/10/12",
       "status": "todo",
       "order": "1"
     },
     {
-      "id": 6,
+      "id": 7,
       "list_id": "1",
-      "description": "first thing",
-      "date": "2021-10-14T22:03:33.979Z",
-      "status": "todo",
+      "description": "huisarts 19u20",
+      "date": "2021/10/18",
+      "status": "done",
       "order": "1"
     }
   ],

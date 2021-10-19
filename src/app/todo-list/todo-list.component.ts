@@ -1,4 +1,4 @@
-import { DatePipe, formatDate, getLocaleDateFormat } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { TodoService } from '../todo.service';
@@ -14,15 +14,20 @@ export class TodoListComponent implements OnInit {
   @Input() todoList: TodoList = {id: 0, name: "", category: ""};
   @Input() list_id:string="";
   todoItems: TodoItem[] = [];
-  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date: new Date(), status: "todo", order: "1"};
+  deleted: boolean=false;
+  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date: "", status: "todo", order: "1"};
 
   todoItems$: Subscription = new Subscription();
   postTodoItem$: Subscription = new Subscription();
   deleteTodoItem$: Subscription = new Subscription();
+  todoLists$: Subscription = new Subscription();
+  postTodoList$: Subscription = new Subscription();
+  putTodoList$: Subscription = new Subscription();
+  deleteTodoList$: Subscription = new Subscription();
 
   errorMessage: string = '';
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService ) { }
 
   ngOnInit(): void {
     this.getTodoItems()
@@ -30,9 +35,10 @@ export class TodoListComponent implements OnInit {
   getTodoItems() {
     this.todoItems$ = this.todoService.getTodoItems().subscribe(result => this.todoItems = result);
   }
+
   addTodoItem(){
     if(this.todoItem.description.trim()==""){
-      this.errorMessage = "new todo item required!"
+      this.errorMessage = "description is leeg"
     }else{
       this.errorMessage=""
       this.todoItem.list_id=this.todoList.id.toString()
@@ -53,9 +59,42 @@ export class TodoListComponent implements OnInit {
       this.errorMessage = error.message;
     });
   }
+  editTodoList(){
+    if(this.todoList.name.trim()==""){
+      console.log("name can't be empty!")
+    }else{
+      this.putTodoList$ = this.todoService.putTodoList(this.todoList.id,this.todoList).subscribe(result => {
+        console.log(this.todoList)
+      },
+      error => {
+        this.errorMessage = error.message;
+      });
+    }
+  }
+  deleteTodoList(id: number) {
+    this.todoItems.forEach(element => {
+      if(Number(element.list_id)==id){
+        this.todoService.deleteTodoItem(element.id).subscribe(result=>{})
+      }
+    });
+    this.deleteTodoList$ = this.todoService.deleteTodoList(id).subscribe(result => {
+      this.deleted=true
+    }, error => {
+      error
+      this.errorMessage = error.message;
+    });
+  }
+  deleteRelatedTodoItems(list_id:number){
+    this.todoItems.forEach(element => {
+      if(Number(element.list_id)==list_id){
+        this.todoService.deleteTodoItem(element.id)
+      }
+    });
+  }
   ngOnDestroy(): void {
     this.todoItems$.unsubscribe();
     this.postTodoItem$.unsubscribe();
     this.deleteTodoItem$.unsubscribe();
   }
+
 }
