@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { NgxColorsModule } from 'ngx-colors';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderByPipe } from './order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     MenuComponent,
     TodoItemComponent,
-    TodoListComponent
+    TodoListComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,7 @@
       "id": 2,
       "list_id": "2",
       "description": "some comment2",
-      "date": "2023/02/01",
+      "date": "2021/10/22",
       "status": "todo",
       "order": "1"
     },
@@ -61,7 +61,7 @@
       "id": 7,
       "list_id": "1",
       "description": "huisarts 19u20",
-      "date": "2021/10/18",
+      "date": "2021/10/21",
       "status": "done",
       "order": "1"
     },
@@ -69,7 +69,7 @@
       "id": 8,
       "list_id": "1",
       "description": "naar shop",
-      "date": "2021/10/07",
+      "date": "2021/10/22",
       "status": "todo",
       "order": "1"
     }
