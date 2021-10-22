@@ -4,8 +4,9 @@
   <input class="mr-2 text-dark font-weight-bold bg-transparent border-0" (change)="editTodoItem()"
   [(ngModel)]="todoItem.description" placeholder=" omschrijving ..." title="klik erop om aan te passen"
    [ngClass]="{'strike': todoItem.status==='done'}"/>
-  <input type="date" class="small text-dark" [(ngModel)]="todoItem.date" (change)="editTodoItemDate()" />
-  {{(todoItem.date.replace('/','-')).replace('/','-')}}
+  <input [ngClass]="{'is-invalid border-danger': todoItem.date==''}" type="date"
+  class="small text-dark border-light rounded" [ngModel]="(todoItem.date.replace('/','-')).replace('/','-')"
+  #newDate (change)="editTodoItemDate(newDate.value)" />
 
 </li>
 

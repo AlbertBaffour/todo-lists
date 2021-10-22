@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "test1",
-      "category": "#388e3c"
+      "category": "#03a9f4"
     },
     {
       "id": 2,
@@ -45,7 +45,7 @@
       "id": 4,
       "list_id": "3",
       "description": "Albertfd",
-      "date": "2021-10-12",
+      "date": "2021/11/03",
       "status": "todo",
       "order": "1"
     },
@@ -53,7 +53,7 @@
       "id": 5,
       "list_id": "3",
       "description": "Huistaak ai",
-      "date": "2021/10/12",
+      "date": "2021/11/02",
       "status": "todo",
       "order": "1"
     },
@@ -63,6 +63,14 @@
       "description": "huisarts 19u20",
       "date": "2021/10/18",
       "status": "done",
+      "order": "1"
+    },
+    {
+      "id": 8,
+      "list_id": "1",
+      "description": "naar shop",
+      "date": "2021/10/07",
+      "status": "todo",
       "order": "1"
     }
   ],

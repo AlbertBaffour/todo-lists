@@ -46,7 +46,8 @@ export class TodoItemComponent implements OnInit {
       });
     }
   }
-  editTodoItemDate(){
+  editTodoItemDate(date: string){
+      this.todoItem.date=(date.replace('-','/')).replace('-','/');
       this.putTodoItem$ = this.todoService.putTodoItem(this.todoItem.id,this.todoItem).subscribe(result => {
         console.log(this.todoItem)
       },

@@ -15,7 +15,9 @@ export class TodoListComponent implements OnInit {
   @Input() list_id:string="";
   todoItems: TodoItem[] = [];
   deleted: boolean=false;
-  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date: "", status: "todo", order: "1"};
+  d=new Date();
+  stringDate =  this.d.getFullYear()+"/"+ this.addZero(this.d.getUTCMonth().toString()) +"/"+ this.addZero(this.d.getDay().toString());
+  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date:this.stringDate, status: "todo", order: "1"};
 
   todoItems$: Subscription = new Subscription();
   postTodoItem$: Subscription = new Subscription();
@@ -90,6 +92,12 @@ export class TodoListComponent implements OnInit {
         this.todoService.deleteTodoItem(element.id)
       }
     });
+  }
+  addZero(str:string){
+    if (str.length==1) {
+      return "0"+str
+    }
+    return str
   }
   ngOnDestroy(): void {
     this.todoItems$.unsubscribe();
