@@ -13,7 +13,12 @@
     {
       "id": 3,
       "name": "test3",
-      "category": "Purple"
+      "category": "#00796b"
+    },
+    {
+      "id": 4,
+      "name": "test4",
+      "category": "#245561"
     }
   ],
   "items": [
@@ -23,7 +28,7 @@
       "description": "some commen1t",
       "date": "2021/10/18",
       "status": "todo",
-      "order": "1"
+      "order": "0"
     },
     {
       "id": 2,
@@ -39,22 +44,22 @@
       "description": "some comment3",
       "date": "2000/02/01",
       "status": "done",
-      "order": "2"
+      "order": "0"
     },
     {
       "id": 4,
       "list_id": "3",
-      "description": "Albertfd",
+      "description": "Alberf",
       "date": "2021/11/03",
       "status": "todo",
-      "order": "1"
+      "order": "0"
     },
     {
       "id": 5,
       "list_id": "3",
       "description": "Huistaak ai",
-      "date": "2021/11/02",
-      "status": "todo",
+      "date": "2021/11/03",
+      "status": "done",
       "order": "1"
     },
     {
@@ -71,7 +76,31 @@
       "description": "naar shop",
       "date": "2021/10/22",
       "status": "todo",
+      "order": "2"
+    },
+    {
+      "id": 9,
+      "list_id": "4",
+      "description": "taak11",
+      "date": "2021/10/22",
+      "status": "todo",
       "order": "1"
+    },
+    {
+      "id": 10,
+      "list_id": "4",
+      "description": "taak2",
+      "date": "2021/10/24",
+      "status": "done",
+      "order": "0"
+    },
+    {
+      "id": 11,
+      "list_id": "4",
+      "description": "taak3",
+      "date": "2021/10/14",
+      "status": "todo",
+      "order": "2"
     }
   ],
   "profile": {

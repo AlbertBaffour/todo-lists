@@ -1,9 +1,9 @@
-import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { TodoService } from '../todo.service';
 import { TodoItem } from '../todo_item';
 import { TodoList } from '../todo_list';
+import { CdkDragDrop,moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,27 +15,24 @@ export class TodoListComponent implements OnInit {
   @Input() list_id:string="";
   todoItems: TodoItem[] = [];
   deleted: boolean=false;
-  d=new Date();
-  stringDate =  this.d.getFullYear()+"/"+("0"+(this.d.getMonth()+1).toString()).slice(-2) +"/"+ ("0"+(this.d.getDate().toString())).slice(-2);
-  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date:this.stringDate, status: "todo", order: "1"};
+  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "1"};
 
   todoItems$: Subscription = new Subscription();
   postTodoItem$: Subscription = new Subscription();
+  putTodoItem$: Subscription = new Subscription();
   deleteTodoItem$: Subscription = new Subscription();
-  todoLists$: Subscription = new Subscription();
-  postTodoList$: Subscription = new Subscription();
   putTodoList$: Subscription = new Subscription();
   deleteTodoList$: Subscription = new Subscription();
 
   errorMessage: string = '';
 
-  constructor(private todoService: TodoService ) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.getTodoItems()
   }
   getTodoItems() {
-    this.todoItems$ = this.todoService.getTodoItems().subscribe(result => this.todoItems = result);
+    this.todoItems$ = this.todoService.getTodoItemsByList(this.todoList.id).subscribe(result => this.todoItems = result);
   }
 
   addTodoItem(){
@@ -46,7 +43,7 @@ export class TodoListComponent implements OnInit {
       this.todoItem.list_id=this.todoList.id.toString()
       this.postTodoItem$ = this.todoService.postTodoItem(this.todoItem).subscribe(result => {
         console.log(this.todoItem)
-        this.todoItem= { id: 0,  list_id: "", description: "", date:this.stringDate, status: "todo", order: "1"};
+        this.todoItem= { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "1"};
         this.getTodoItems()
       },
       error => {
@@ -54,6 +51,7 @@ export class TodoListComponent implements OnInit {
       });
     }
   }
+
   deleteTodoItem(id: number) {
     this.deleteTodoItem$ = this.todoService.deleteTodoItem(id).subscribe(result => {
       this.getTodoItems()
@@ -94,10 +92,37 @@ export class TodoListComponent implements OnInit {
       }
     });
   }
+  drop(event:any) {
+
+      // change the items index
+      moveItemInArray(
+        this.todoItems,
+        event.previousIndex,
+        event.currentIndex
+      );
+        this.todoItems.forEach(item => {
+          if(item.order != this.todoItems.indexOf(item).toString()){
+        item.order = this.todoItems.indexOf(item).toString();
+        this.putTodoItem$ = this.todoService.putTodoItem(item.id,item).subscribe(() => {},
+          error => {
+            console.log(error.message);
+          });
+        }
+      });
+  }
+  getCurrentDate(){
+    var d =new Date();
+    return d.getFullYear()+"/"+("0"+(d.getMonth()+1).toString()).slice(-2) +"/"+ ("0"+(d.getDate().toString())).slice(-2);
+  }
   ngOnDestroy(): void {
     this.todoItems$.unsubscribe();
     this.postTodoItem$.unsubscribe();
     this.deleteTodoItem$.unsubscribe();
+    this.putTodoItem$.unsubscribe();
+    this.putTodoList$.unsubscribe();
+    this.deleteTodoList$.unsubscribe();
+
+
   }
 
 }

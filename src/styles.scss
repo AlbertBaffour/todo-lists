@@ -10,6 +10,9 @@ $primary: #245561;
 @import "node_modules/bootstrap/scss/bootstrap";
 
 //custom code/partials
+.list-border{
+  border-width: 2px !important;
+}
 .hide-modal{
   display: none;
   opacity: 0;

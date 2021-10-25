@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { NgxColorsModule } from 'ngx-colors';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderByPipe } from './order-by.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OrderByPipe } from './order-by.pipe';
     HttpClientModule,
     FormsModule,
     NgxColorsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule,
 
   ],
   providers: [],

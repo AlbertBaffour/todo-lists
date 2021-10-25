@@ -1,5 +1,5 @@
 <div [ngClass]="{'d-none': deleted}">
-<ul class="m-4 rounded-lg border-dark border" >
+<ul class="m-4 rounded-lg border-dark border list-border" >
   <li [ngStyle]="{'background-color':todoList.category}" class=" list-group-item text-center" ><input class=" bg-transparent border-0 text-center text-light font-weight-bolder"
     (change)="editTodoList()" placeholder="todolijst ..."
     [(ngModel)]="todoList.name" title="klik erop om aan te passen"/>
@@ -13,14 +13,15 @@
           <i class="fas fa-plus"></i>
           </button>
     </div>
-    <div  *ngFor="let todoItem of todoItems | orderBy:'order':false">
-      <button title="kaart verwijderen van lijst" *ngIf="todoItem.list_id===todoList.id.toString()"
+    <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)" [ngStyle]="{'background-color':todoList.category}">
+    <div class=" bg-white todo-item"  *ngFor="let todoItem of todoItems | orderBy:'order':false" cdkDrag>
+      <button title="kaart verwijderen van lijst"
       class="btn text-danger delete-btn mt-2 border-0 float-right"
       (click)="deleteTodoItem(todoItem.id)">
       <i class="fas fa-trash-alt"></i>
       </button>
       <app-todo-item [todoItem]="todoItem" [list_id]="todoList.id.toString()"></app-todo-item>
-
+    </div>
   </div>
 </ul>
 <button title="Lijst verwijderen" class="position-absolute btn-del h3 rounded-circle bg-white text-danger"

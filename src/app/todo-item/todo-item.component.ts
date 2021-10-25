@@ -14,7 +14,6 @@ export class TodoItemComponent implements OnInit {
   @Input() list_id:string="";
   errorMessage: string = "";
 
-  todoItem$: Subscription = new Subscription();
   putTodoItem$: Subscription = new Subscription();
 
   constructor(private todoService: TodoService) {
@@ -56,7 +55,6 @@ export class TodoItemComponent implements OnInit {
       });
   }
   ngOnDestroy(): void {
-    this.todoItem$.unsubscribe();
     this.putTodoItem$.unsubscribe();
   }
 

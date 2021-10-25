@@ -12,7 +12,8 @@ import { ObserverService } from '../observer.service';
 export class HomeComponent implements OnInit {
   messageReceived: any;
   private newListCreated$: Subscription;
-  todoLists$: Observable<TodoList[]> = new Observable<TodoList[]>();
+  todoLists: TodoList[]=[];
+  todoLists$: Subscription = new Subscription();
 
   constructor(private todoService: TodoService, private ObserverService: ObserverService) {
 
@@ -24,9 +25,12 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.todoLists$=this.todoService.getTodoLists()
+    this.todoLists$=this.todoService.getTodoLists().subscribe( todoLists=>
+      this.todoLists= todoLists.sort((n1,n2) => n2.id - n1.id)
+    )
   }
   ngOnDestroy() {
+    this.todoLists$.unsubscribe();
     this.newListCreated$.unsubscribe();
 }
 
