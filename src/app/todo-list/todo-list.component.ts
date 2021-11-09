@@ -15,7 +15,7 @@ export class TodoListComponent implements OnInit {
   @Input() list_id:string="";
   todoItems: TodoItem[] = [];
   deleted: boolean=false;
-  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "1"};
+  todoItem: TodoItem = { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "0"};
 
   todoItems$: Subscription = new Subscription();
   postTodoItem$: Subscription = new Subscription();
@@ -43,7 +43,7 @@ export class TodoListComponent implements OnInit {
       this.todoItem.list_id=this.todoList.id.toString()
       this.postTodoItem$ = this.todoService.postTodoItem(this.todoItem).subscribe(result => {
         console.log(this.todoItem)
-        this.todoItem= { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "1"};
+        this.todoItem= { id: 0,  list_id: "", description: "", date:this.getCurrentDate(), status: "todo", order: "0"};
         this.getTodoItems()
       },
       error => {

@@ -1,11 +1,11 @@
 <div [ngClass]="{'d-none': deleted}">
 <ul class="m-4 rounded-lg border-dark border list-border" >
-  <li [ngStyle]="{'background-color':todoList.category}" class=" list-group-item text-center" ><input class=" bg-transparent border-0 text-center text-light font-weight-bolder"
+  <li [ngStyle]="{'background-color':todoList.category}" class=" list-group-item text-center" ><input class="border-0 bg-transparent text-center text-light font-weight-bolder"
     (change)="editTodoList()" placeholder="todolijst ..."
     [(ngModel)]="todoList.name" title="klik erop om aan te passen"/>
     </li>
     <div class="input-group">
-      <input type="text" placeholder="nieuwe kaart ..."
+      <input type="text" placeholder="nieuwe taak ..."
       [ngClass]="{'is-invalid':errorMessage}"
        class="form-control m-2"
        [(ngModel)]="todoItem.description"  #description="ngModel" >
@@ -14,7 +14,7 @@
           </button>
     </div>
     <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)" [ngStyle]="{'background-color':todoList.category}">
-    <div class=" bg-white todo-item"  *ngFor="let todoItem of todoItems | orderBy:'order':false" cdkDrag>
+    <div class=" bg-white todo-item"  *ngFor="let todoItem of todoItems | orderBy:'order':true" cdkDrag>
       <button title="kaart verwijderen van lijst"
       class="btn text-danger delete-btn mt-2 border-0 float-right"
       (click)="deleteTodoItem(todoItem.id)">
